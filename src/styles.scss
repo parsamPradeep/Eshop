@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+// Import Bootstrap variables
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+
+
+body{
+    padding-top: 18px;
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
