@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'bs-navbar',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./bs-navbar.component.scss']
 })
 export class BsNavbarComponent {
-
+  
+  constructor(public auth: AuthService){
+    
+  }
+  
+  logOut(){
+     this.auth.logOut()
+  }
 }
