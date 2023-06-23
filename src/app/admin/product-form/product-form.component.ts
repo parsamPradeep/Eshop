@@ -12,21 +12,29 @@ import {take} from 'rxjs';
 export class ProductFormComponent {
   categories$;
   product:any={};
+  id;
     constructor(
        private categoryService: CategoryService,
        private productService: ProdutsService,
        private router: Router,
        private route: ActivatedRoute){
       this.categories$=categoryService.getCategories();
-      let id= this.route.snapshot.paramMap.get('id');
-      if (id) { this.productService.getProduct(id).pipe(take(1)).subscribe(p => {
+      this.id= this.route.snapshot.paramMap.get('id');
+      if (this.id) { this.productService.getProduct(this.id).pipe(take(1)).subscribe(p => {
         
         let obj = {...p.val};
         this.product = obj}); }
     }
 
     save(product: any){
-      this.productService.create(product);
+      if(this.id) this.productService.update(this.id, product)
+      else this.productService.create(product);
       this.router.navigate(['/admin/products']);
+    }
+    delete() {
+      if (this.id && confirm('Are you sure you want to delete this product?')) {
+        this.productService.delete(this.id);
+        this.router.navigate(['/admin/products']);
+      }
     }
 }

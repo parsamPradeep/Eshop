@@ -33,4 +33,12 @@ export class ProdutsService {
         });
       }));
   }
+
+  update(productId: string, product: any) {
+    return this.db.object('/products/' + productId).update(product);
+  }
+
+  delete(productId: string) {
+    return this.db.object('/products/' + productId).remove();
+  }
 }
