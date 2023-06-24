@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -52,6 +53,7 @@ import { ProdutsService } from './produts.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     FormsModule,
+    NgxDatatableModule,
     RouterModule.forRoot([
       {path: '', component:HomepageComponent},
       {path:'products', component: ProductsComponent},

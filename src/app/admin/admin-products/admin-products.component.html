@@ -1,14 +1,53 @@
 <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
-<p>
-  <input
-    type="text"
-    class="form-control"
-    placeholder="Seacrh.."
-    #query
-    (keyup)="filter(query.value)"
-  />
-</p>
-<table class="table">
+<input
+  type="text"
+  class="form-control"
+  placeholder="Seacrh.."
+  #query
+  (keyup)="filter(query.value)"
+/>
+
+<ngx-datatable
+  class="material"
+  [rows]="rows"
+  [columnMode]="'force'"
+  [headerHeight]="40"
+  [footerHeight]="40"
+  [limit]="10"
+  [rowHeight]="'auto'"
+>
+  <ngx-datatable-column prop="title"></ngx-datatable-column>
+  <ngx-datatable-column prop="category"></ngx-datatable-column>
+  <ngx-datatable-column prop="price">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      <span>{{ value | currency : "USD" : "$" }}</span>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <a [routerLink]="['/admin/products', row['$key']]">
+        <i class="fa fa-edit fa-lg">Edit</i>
+      </a>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+<!-- <ngx-datatable
+  class="material"
+  [rows]="rows"
+  [columns]="[
+    { name: 'Title' },
+    { name: 'Category' },
+    { name: 'Price' },
+    { name: 'Edit' }
+  ]"
+  [columnMode]="force"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  rowHeight="auto"
+  [limit]="10"
+>
+</ngx-datatable> -->
+<!-- <table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -17,12 +56,26 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of filteredProducts">
-      <td>{{ product.val["title"] }}</td>
-      <td>{{ product.val["price"] }}</td>
+    <tr *ngFor="let product of rows">
+      <td>{{ product["title"] }}</td>
+      <td>{{ product["price"] }}</td>
       <td>
         <a [routerLink]="['/admin/products/', product['$key']]">Edit</a>
       </td>
     </tr>
   </tbody>
 </table>
+<nav>
+  <ul class="pagination">
+    <li class="page-item" id="previousPage">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item" id="nextPage">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav> -->

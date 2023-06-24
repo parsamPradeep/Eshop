@@ -1,6 +1,8 @@
 import { ProdutsService } from 'src/app/produts.service';
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Products } from 'src/app/models/products';
+import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-admin-products',
@@ -8,11 +10,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent implements OnDestroy{
-    products:any=[];
+    products: Products[] = [];
     filteredProducts: any=[];
+    rows: Products[] = [];
     subscription: Subscription;
+    force=ColumnMode.force;
     constructor(private productsService: ProdutsService){
-      this.subscription = productsService.getAll().subscribe(p => {this.filteredProducts=this.products=p; console.log(p)});
+      this.subscription = productsService.getAll().subscribe(p => {this.rows=this.products=p; console.log(p)});
     }
   
     ngOnDestroy(): void {
@@ -22,9 +26,9 @@ export class AdminProductsComponent implements OnDestroy{
     filter(query: any){
       console.log(query)
       if(query){
-        this.filteredProducts=this.products.filter((p:any) => p.val.title.toLowerCase().includes(query.toLowerCase()));
+        this.rows=this.products && this.products.filter((p:any) => p.title.toLowerCase().includes(query.toLowerCase()));
       }else{
-        this.filteredProducts=this.products;
+        this.rows=this.products;
       }
     }
 

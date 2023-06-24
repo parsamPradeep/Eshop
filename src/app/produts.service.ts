@@ -23,15 +23,17 @@ export class ProdutsService {
   }
 
   getAll(): Observable<any[]> {
-    return this.db.list('/products').snapshotChanges()
-      .pipe(map(data => {
+    return this.db.list('/products').snapshotChanges().pipe(
+      map(data => {
         return data.map(action => {
           const $key = action.payload.key;
           const val = action.payload.val();
-          const data = { $key,  val};
+          const obj = val ? { ...val } : null;
+          const data = { $key, ...obj };
           return data;
         });
-      }));
+      })
+    );
   }
 
   update(productId: string, product: any) {
