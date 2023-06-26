@@ -49,11 +49,12 @@
           name="category"
           id="category"
           class="form-control"
+          name="category"
           required
         >
-          <option value=""></option>
+          <!-- <option value="">Choose...</option> -->
           <option *ngFor="let c of categories$ | async">
-            {{ c.val.name }}
+            {{ product!.category || c.name }}
           </option>
         </select>
         <div

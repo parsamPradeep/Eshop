@@ -15,10 +15,10 @@ export class ProdutsService {
   getProduct(Id: string): Observable<any> {
     return this.db.object('/products/'+ Id).snapshotChanges().
     pipe(map(data => {
-        const $key = data.payload.key;
+        const key = data.payload.key;
         const val = data.payload.val();
         console.log(data.payload.val());
-        return { $key,  val};
+        return { key,  val};
     }));
   }
 
@@ -26,10 +26,10 @@ export class ProdutsService {
     return this.db.list('/products').snapshotChanges().pipe(
       map(data => {
         return data.map(action => {
-          const $key = action.payload.key;
+          const key = action.payload.key;
           const val = action.payload.val();
           const obj = val ? { ...val } : null;
-          const data = { $key, ...obj };
+          const data = { key, ...obj };
           return data;
         });
       })

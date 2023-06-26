@@ -1,3 +1,16 @@
 .dropdown-toggle{
     cursor: pointer;
 }
+.expansionPanel{
+    background-color: #f5f5f5;
+}
+.navBarItem{
+    margin-left: 20px;
+}
+.navBar{
+    margin-bottom: 20px;
+}
+::ng-deep .mat-toolbar{
+    z-index: 998;
+    position: fixed
+  }

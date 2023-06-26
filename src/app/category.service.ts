@@ -8,10 +8,17 @@ import { Observable, map } from 'rxjs';
 export class CategoryService {
 
   constructor(private db: AngularFireDatabase) { }
-  getCategories(): Observable<any[]> {
+  getAll(): Observable<any[]> {
     return this.db.list('/categories').snapshotChanges().pipe(
       map(changes => {
-        return changes.map(c => ({ key: c.payload.key, val: c.payload.val() }));
+        return changes.map(c => {
+          const key = c.payload.key;
+          const val = c.payload.val();
+          const obj = val ? { ...val } : null;
+          const data = { key, ...obj };
+          return data;  
+         }
+        );
       })
     );
   }

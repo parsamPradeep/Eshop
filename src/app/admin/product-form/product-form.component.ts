@@ -7,7 +7,7 @@ import {take} from 'rxjs';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss']
+  styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent {
   categories$;
@@ -18,7 +18,7 @@ export class ProductFormComponent {
        private productService: ProdutsService,
        private router: Router,
        private route: ActivatedRoute){
-      this.categories$=categoryService.getCategories();
+      this.categories$=categoryService.getAll();
       this.id= this.route.snapshot.paramMap.get('id');
       if (this.id) { this.productService.getProduct(this.id).pipe(take(1)).subscribe(p => {
         
