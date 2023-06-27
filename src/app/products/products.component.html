@@ -33,9 +33,9 @@
               <h5 class="card-title">{{ p.title }}</h5>
               <p class="card-text">{{ p.price | currency : "USD" : true }}</p>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary btn-block">Add to Cart</a>
+            <div>
+              <a href="#" class="btn btn-primary btn-block">Add to Cart</a>
+            </div>
           </div>
         </div>
         <div *ngIf="(i + 1) % 2 == 0" class="w-100"></div>

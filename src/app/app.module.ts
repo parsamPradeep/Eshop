@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion'
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -78,6 +79,7 @@ import { ProdutsService } from './produts.service';
     MatExpansionModule,
     MatMenuModule,
     MatIconModule,
+    MatGridListModule,
 
     MatToolbarModule,
     MatButtonModule,

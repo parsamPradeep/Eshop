@@ -100,7 +100,7 @@
     <ng-container *ngIf="appUser; else login">
       <button mat-button [matMenuTriggerFor]="menu" class="navBarItem">
         <mat-icon fontIcon="account_circle"></mat-icon>
-        {{ appUser?.name }}
+        {{ appUser.name }}
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="/my/order">My order</button>
