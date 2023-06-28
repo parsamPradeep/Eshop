@@ -1,15 +1,16 @@
-.btn{
-    width: 290px;
-    top: 180px
-}
-.list-group{
-    top: 90px;
-    z-index: auto;
-}
-.card{
-   top: 90px;
-   margin-bottom: 20px;
-}
+
 .noProduct{
     margin: 200px 100px;
 }
+.scrollable-section {
+    height: 100%; /* Adjust the height as needed */
+    overflow-y: auto;
+}  
+.filter{
+    margin-top: 90px;
+    z-index: auto;
+}
+.card{
+    top: 90px;
+    margin-bottom: 20px;
+ }

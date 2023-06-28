@@ -1,0 +1,14 @@
+<mat-nav-list class="sticky-top">
+  <a mat-list-item routerLink="/" [routerLinkActive]="category"
+    >All categories</a
+  >
+  <a
+    mat-list-item
+    *ngFor="let c of categories | async"
+    routerLink="/"
+    [queryParams]="{ category: c.key }"
+    [routerLinkActive]="c.key"
+  >
+    {{ c.name }}
+  </a>
+</mat-nav-list>

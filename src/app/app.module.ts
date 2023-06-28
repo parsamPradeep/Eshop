@@ -19,6 +19,7 @@ import { MatExpansionModule } from '@angular/material/expansion'
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -45,6 +46,8 @@ import { AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
 import { ProdutsService } from './produts.service';
+import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { ProdutsService } from './produts.service';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
+    ProductsFilterComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +85,7 @@ import { ProdutsService } from './produts.service';
     MatMenuModule,
     MatIconModule,
     MatGridListModule,
+    MatCardModule,
 
     MatToolbarModule,
     MatButtonModule,
